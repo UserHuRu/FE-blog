@@ -6,6 +6,7 @@ Response Heaers的Content-Type: application/octet-stream（二进制流，不知
 这里mlink-middle可能被nginx解析为文件夹，而不是html文件， 导致返回类型错误；
 
 解决方法： 重新设置软连接为 ln -s ../mlink-middle-page/mlink-middle.html mlink-middle.html  即，给新的软链名加上.html后缀。
+
 注：周四晚上，又发现该页面报错，表现为页面内容显示是软连接，经查看是 后上的分支因为合并别人分支的时候，不小心把重设的软链覆盖了，导致软链失效。人为失误导致。
  * 合别人代码是要仔细检查每一处更改
  * 查看软链命令：public> ls -htl
