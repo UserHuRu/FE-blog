@@ -5,6 +5,9 @@ step 1- 为什么前端需要模块化？
  问题： js文件间依赖关系混乱问题。
  => 通过规定一些特殊的语法，来在代码中声明依赖关系，再开发一个工具来自动化处理文件之间的依赖，就可以解决依赖混乱的问题
  
+ =>代码分离 便于理解和维护
+ =>代码复用
+ 
  以上做法我们称为 模块化。
  
  我们把每一个 .js 文件都视为一个 模块，
@@ -18,11 +21,72 @@ CommonJS 由于是被 NodeJS 所采用的，所以很多人用；
 ES6 Module 自然是ECMAScript 2015 所采用的了，以后会逐渐成为最主要的模块化规范；
 
 => CommonJS语法
+
+// foo.js
 module.exports = {
   bar: 123
 }
 
+
+// index.js
 require('foo.js') // 返回 { bar: 123 }
 
+用于服务器端;
+所有代码都运行在模块作用域，不会污染全局作用域；一个文件就是一个模块，每个模块都是单独的作用域，除非定义为global对象的属性；
+只能在运行时确定;
+同步加载，也就是说，只有加载完成，才能执行后面的操作。所以一般来说，CommonJS规范不适用于浏览器环境。然而，对服务器端不是一个问题，因为所有的模块都存放在本地硬盘，可以同步加载完成，等待时间就是硬盘的读取时间。;
+模块加载的顺序，按照其在代码中出现的顺序;
+require 命令第一次执行的时候，会加载并执行整个脚本，然后在内存中生成此脚本返回的 exports 对象；
+引用自定义的模块时，参数包含路径，可省略.js， 例如 var math = require('./math')；
+引用核心模块时，不需要带路径，例如 var http = require('http');
+
+
+
+=> ES6 语法
+//foo.js
+export let env = 'qa'
+
+//index.js
+import {env} from './foo'
+
+ES6 模块在 浏览器 和 服务器端 都可以用;
+ES6 模块的设计思想是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量;
+ES6 模块遇到 import 命令时，不会去执行模块，而是生成一个引用，等用到的时候，才去模块中取值;
+import 命令具有提升效果，会提升到整个模块的头部;
+因为是动态引用，所以不存在缓存的问题;
+
+关于兼容ES6语法：
+> npm install --save-dev babel-preset-env // 支持箭头函数等es6语法
+> npm install --save babel-polyfill // 支持Promise、String.padStart d等
+
+> Create a .babelrc file (or use your package.json)
+{ "presets": ["env"] }
+
+
+usage： import "babel-polyfill" // 加载应用的入口文件里
+module.exports = { // webpack.config.js文件里
+  entry: ["babel-polyfill", "./app/js"]
+};
+
+
+Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in old browsers or environments
+
 ------------元气满满--------------------
-有了规范，需要工
+有了规范，需要工具自动处理这些依赖
+
+Webpack 
+
+-------------元气满满------------------
+ES6 模块与 CommonJS 模块的差异：
+CommonJS 模块输出的是一个值的拷贝，
+ES6 模块输出的是值的引用。
+
+CommonJS 模块是运行时加载，
+ES6 模块是编译时输出接口。
+
+CommonJS 加载的是一个对象（即module.exports属性），该对象只有在脚本运行完才会生成。
+而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成
+
+
+
+
