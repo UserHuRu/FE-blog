@@ -1,0 +1,6 @@
+------------元气满满-----------webpack知识点--------
+命令： webpack --json > stats.json 生成项目的json文件，用来配合webpack分析工具（
+  · webpack-chart：webpack统计信息的交互式饼图。
+  · webpack-visualizer：可视化和分析您的软件包，以查看哪些模块占用空间以及哪些模块可能重复。
+  · webpack-bundle-analyzer：一个插件和CLI实用程序，它将bundle内容表示为方便的交互式zoomable treemap。
+），可查看项目打包的分析数据
