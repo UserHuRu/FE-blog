@@ -1,0 +1,26 @@
+1- 简单的方案： 将数字转成整数， 但是这种方法对大数支持的依然不好
+function add(num1, num2) {
+ const num1Digits = (num1.toString().split('.')[1] || '').length;
+ const num2Digits = (num2.toString().split('.')[1] || '').length;
+ const baseNum = Math.pow(10, Math.max(num1Digits, num2Digits));
+ console.log(baseNum)
+ return (num1 * baseNum + num2 * baseNum) / baseNum;
+}
+
+2- 第三方库
+
+1).Math.js
+
+专门为 JavaScript 和 Node.js 提供的一个广泛的数学库。支持数字，大数字(超出安全数的数字)，复数，分数，单位和矩阵。
+
+官网： http://mathjs.org/
+github: https://github.com/josdejong/mathjs
+
+2).big.js
+
+官网： http://mikemcl.github.io/big.js/
+github：http://mikemcl.github.io/big.js/
+
+3-）项目中计算百分比(这里保留4位小数)的处理方法： Math.round(remain_captial * 100 / captial_total * 10000) / 10000 = xx%
+                                                                                                |       |
+                                                                                           这两处作用是保留4位小数
