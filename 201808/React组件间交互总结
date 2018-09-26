@@ -9,3 +9,12 @@ Step-2 不借助任何工具的通信方式
 
 Step-3 利用状态管理工具实现
 redux、flux
+
+工作相关记录：
+ =>问题描述： 对于被connect封装后的组件，父组件想调用子组件的方法
+  首先：子组件 connect 的 options 参数 withRef 必须设置为 true
+    例：export default connect(mapStateToProps, mapDispatchToProsp, null, { withRef: true })(Child)
+  然后：父组件 this.refs.nature.getWrappedInstance().resetIdCard()
+                          |                             |
+                      [refName]                    [子组件方法名]
+ 
