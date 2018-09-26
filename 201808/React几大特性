@@ -1,2 +1,6 @@
-· props 用来传递数据，state 用来存储组件内部的状态和数据。props 是只读的，state 当前组件 state 的值可以作为 props 传递给下层组件。
-· React 组件按照生命周期运行，改变 state 就会重新执行 render 方法。render 方法返回的是一段 JSX 语法的结构用来渲染到页面上。
+
+· props 用来传递数据，state 用来存储组件内部的状态和数据。
+  props 是只读的，state 当前组件 state 的值可以作为 props 传递给下层组件。
+
+· React 组件按照生命周期运行，改变 state 就会重新执行 render 方法。
+  render 方法返回的是一段 JSX 语法的结构用来渲染到页面上。
