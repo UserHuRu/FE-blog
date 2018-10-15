@@ -1,0 +1,72 @@
+1. 水平垂直居中
+
+#container{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+
+非flex解决方案1：
+  #container{
+    position:relative;
+  }
+
+  #center{
+      width:100px;
+      height:100px;
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+  }
+
+  非flex解决方案2(子元素需要知道宽高)：
+  #container{
+    position:relative;
+    width: 100%;
+    height: 300px;
+  }
+
+  #center{
+      width: 100px;
+      height: 100px;
+      background: pink;
+      position:absolute;
+      top:50%;
+      left:50%;
+      margin: -50px 0 0 -50px;
+  }
+
+  非flex解决方案3(子元素需要知道宽高)：
+  #container{
+    position:relative;
+    width: 100%;
+    height: 300px;
+  }
+
+  #center{
+      width: 100px;
+      height: 100px;
+      background: pink;
+      position:absolute;
+      margin:auto;
+      top:0;
+      bottom:0;
+      left:0;
+      right:0;
+  }
+
+  非flex解决方案3：
+  #container{
+    position:relative;
+    width: 100%;
+    height: 300px;
+  }
+
+  #center{
+      background: pink;
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+  }
