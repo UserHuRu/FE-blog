@@ -1,0 +1,12 @@
+// 下载 node
+nvm install v6.10.3
+
+// 查看当前node版本列表  绿色箭头表示当前使用的node版本
+nvm ls
+
+// 切换 node 版本
+nvm use v6.10.3
+
+
+参考链接： https://zhuanlan.zhihu.com/p/39343335
+感谢原作者！
